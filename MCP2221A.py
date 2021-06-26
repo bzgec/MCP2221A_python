@@ -4,6 +4,7 @@ import usb.util
 import usb.control
 import time
 import ctypes
+import traceback
 
 HID_INTERFACE = 0x02
 INPUT_ENDPOINT = 0x83
@@ -141,8 +142,10 @@ class mcp2221a:
             if self.usbDevice.is_kernel_driver_active(HID_INTERFACE) is True:
                 # print("Detaching kernel driver")
                 self.usbDevice.detach_kernel_driver(HID_INTERFACE)
-        except usb.core.USBError as e:
-            raise ValueError("Kernel driver won't give up control over device: " + str(e))
+        except usb.core.USBError:
+            tracebackStr = traceback.format_exc()
+            raise ValueError("Kernel driver won't give up control over device!")
+            raise ValueError(tracebackStr)
         # self.usbDevice.set_configuration() #  try this line if shiz isnt working
 
     def resetChip(self):
