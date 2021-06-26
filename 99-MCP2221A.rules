@@ -1,0 +1,3 @@
+ENV{DEVTYPE}=="usb_device", SUBSYSTEM=="usb", ENV{PRODUCT}=="4d8/dd/100", MODE="0666"
+
+

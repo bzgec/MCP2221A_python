@@ -22,6 +22,9 @@ link:https://gist.github.com/twitchyliquid64/a093ce11245274a2adeb631ccd2ba7eb[tw
 * `pyusb`: `python -m pip install pyusb`
 * `libusb`:
 ** Arch Linux: `sudo pacman -S libusb`
+* On Linux you need to add MCP2221A to udev rules:
+. Copy link:99-MCP2221A.rules[99-MCP2221A.rules]: `sudo cp 99-MCP2221A.rules /etc/udev/rules.d/`
+. Log out then back in
 
 == Examples
 
